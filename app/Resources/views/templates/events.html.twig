@@ -1,0 +1,25 @@
+{% extends "master.html.twig" %}
+
+{% block meta %}
+    {% autoescape false %}
+        {{ sulu_seo(extension.seo, content, urls, shadowBaseLocale) }}
+    {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+    <h1 property="title">{{ content.title }}</h1>
+
+    <div property="article">
+        {{ content.article|raw }}
+    </div>
+
+    <ul>
+        {% for event in content.events %}
+            <li>
+                <a href="{{ event.url }}">{{ event.start_date }} - {{ event .end_date }}: {{ event.excerpt_title|default(event.title) }}</a>
+
+                {{ event.excerpt_description|raw }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

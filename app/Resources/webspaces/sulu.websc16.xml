@@ -8,6 +8,7 @@
 
     <localizations>
         <localization language="en" default="true"/>
+        <localization language="de"/>
     </localizations>
 
     <default-templates>
@@ -26,6 +27,11 @@
             <context key="main">
                 <meta>
                     <title lang="en">Main Navigation</title>
+                </meta>
+            </context>
+            <context key="footer">
+                <meta>
+                    <title lang="en">Footer Navigation</title>
                 </meta>
             </context>
         </contexts>
@@ -49,7 +55,7 @@
                 </environment>
                 <environment type="dev">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url>{host}/{localization}</url>
                     </urls>
                 </environment>
             </environments>

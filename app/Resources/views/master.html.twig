@@ -30,14 +30,23 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="/">Homepage</a></li>
-                            {% for item in sulu_navigation_root_tree('main') %}
-                                <li>
+                            <li{% if 'homepage' == template %} class="active"{% endif %}><a href="/">Homepage</a></li>
+                            {% for item in sulu_navigation_root_flat('main') %}
+                                <li{% if uuid == item.uuid %} class="active"{% endif %}>
                                     <a href="{{ item.url }}"
                                        title="{{ item.title }}">{{ item.title }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
+
+                        {% if urls|length > 0 %}
+                            <ul class="nav navbar-nav navbar-right">
+                                {% for locale, url in urls %}
+                                    <li><a href="{{ sulu_content_path(url, null, locale) }}">{{ locale }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
                         <form action="{{ path('sulu_search.website_search') }}" method="GET" class="navbar-form navbar-right">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="q" placeholder="Search">
@@ -66,7 +75,18 @@
 
             <footer>
                 {% block footer %}
-                    <p>&copy;  {{ 'now'|date('Y') }} Awesome Web Summer Camp Developer</p>
+                    <div class="pull-left">
+                        <p>&copy;  {{ 'now'|date('Y') }} Awesome Web Summer Camp Developer</p>
+                    </div>
+
+                    <ul class="pull-right list-inline">
+                        {% for item in sulu_navigation_root_flat('footer') %}
+                            <li>
+                                <a href="{{ item.url }}"
+                                   title="{{ item.title }}">{{ item.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 {% endblock %}
             </footer>
         </div>
