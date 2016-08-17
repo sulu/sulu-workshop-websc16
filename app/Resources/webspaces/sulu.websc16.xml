@@ -3,7 +3,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
 
-    <name>Web Summercamp 16</name>
+    <name>Web Summer Camp 16</name>
     <key>websc16</key>
 
     <localizations>
@@ -25,7 +25,7 @@
         <contexts>
             <context key="main">
                 <meta>
-                    <title lang="en">Mainnavigation</title>
+                    <title lang="en">Main Navigation</title>
                 </meta>
             </context>
         </contexts>
@@ -33,7 +33,7 @@
 
     <portals>
         <portal>
-            <name>Web Summercamp 16</name>
+            <name>Web Summer Camp 16</name>
             <key>websc16</key>
 
             <environments>
