@@ -1,0 +1,9 @@
+<ul class="nav navbar-nav">
+    <li{% if template is defined and 'homepage' == template %} class="active"{% endif %}><a href="/">Homepage</a></li>
+    {% for item in sulu_navigation_root_flat('main') %}
+        <li{% if uuid == item.uuid %} class="active"{% endif %}>
+            <a href="{{ sulu_content_path(item.url) }}"
+               title="{{ item.title }}">{{ item.title }}</a>
+        </li>
+    {% endfor %}
+</ul>

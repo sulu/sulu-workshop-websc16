@@ -1,0 +1,5 @@
+<ul class="nav navbar-nav navbar-right">
+    {% for locale, url in urls %}
+        <li><a href="{{ sulu_content_path(url, null, locale) }}">{{ locale }}</a></li>
+    {% endfor %}
+</ul>

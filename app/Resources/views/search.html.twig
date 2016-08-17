@@ -3,12 +3,19 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
-    <h2>Showing {{ hits|length }} results for "{{ query }}"</h2>
+    <h1 class="page-header">Showing {{ hits|length }} results for "{{ query }}"</h1>
 
-    <ul>
-    {% for i, hit in hits %}
-        <li><a href="{{ hit.document.url }}">{{ hit.document.title }}</a></li>
-    {% endfor %}
+    <p>Found {{ hits|length }} result{% if hits|length != 1 %}s{% endif %}.</p>
+
+    <ul class="list-unstyled">
+        {% for i, hit in hits %}
+            <li>
+                <a href="{{ hit.document.url }}">
+                    {{ hit.document.fields.excerptTitle.value|default(hit.document.title) }}
+                </a>
+
+                {{ hit.document.fields.excerptDescription.value|raw|default(hit.document.description) }}
+            </li>
+        {% endfor %}
     </ul>
-
 {% endblock %}
