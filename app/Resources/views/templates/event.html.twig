@@ -1,0 +1,28 @@
+{% extends "master.html.twig" %}
+
+{% block meta %}
+    {% autoescape false %}
+        {{ sulu_seo(extension.seo, content, urls, shadowBaseLocale) }}
+    {% endautoescape %}
+{% endblock %}
+
+{% block content %}
+    <h1 property="title">{{ content.title }}</h1>
+
+    {{ content.start_date }}
+    {{ content.end_date }}
+    {{ content.location.title }}
+
+    {% for section in content.content %}
+        {% if 'text' == section.type %}
+            {{ section.value|raw }}
+        {% elseif 'quote' == section.type %}
+            <blockquote>{{ section.value }}</blockquote>
+            <div>– {{ section.author|length > 0 ? section.author[0].fullName }}</div>
+        {% elseif 'image_gallery' == section.type %}
+            {% for image in section.images %}
+                <img src="{{ image.thumbnails['50x50'] }}" width="50" height="50"/>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

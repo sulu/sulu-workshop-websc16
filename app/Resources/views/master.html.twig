@@ -29,9 +29,21 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <!-- TODO: Insert main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li{% if 'homepage' == template %} class="active"{% endif %}><a href="/">Homepage</a></li>
+                            {% for item in sulu_navigation_root_flat('main') %}
+                                <li{% if uuid == item.uuid %} class="active"{% endif %}>
+                                    <a href="{{ sulu_content_path(item.url) }}"
+                                       title="{{ item.title }}">{{ item.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
 
-                        <!-- TODO: Insert locale switcher -->
+                        <ul class="nav navbar-nav navbar-right">
+                            {% for locale, url in urls %}
+                                <li><a href="{{ sulu_content_path(url, null, locale) }}">{{ locale }}</a></li>
+                            {% endfor %}
+                        </ul>
 
                         <form action="{{ path('sulu_search.website_search') }}" method="GET" class="navbar-form navbar-right">
                             <div class="form-group">
@@ -55,7 +67,14 @@
                         <p>&copy;  {{ 'now'|date('Y') }} Awesome Web Summer Camp Developer</p>
                     </div>
 
-                    <!-- TODO: Insert footer navigation -->
+                    <ul class="pull-right list-inline">
+                        {% for item in sulu_navigation_root_flat('footer') %}
+                            <li>
+                                <a href="{{ sulu_content_path(item.url) }}"
+                                   title="{{ item.title }}">{{ item.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 {% endblock %}
             </footer>
         </div>

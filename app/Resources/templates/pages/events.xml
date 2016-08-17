@@ -3,14 +3,14 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
-    <key>homepage</key>
+    <key>events</key>
 
-    <view>templates/homepage</view>
+    <view>templates/events</view>
     <controller>SuluWebsiteBundle:Default:index</controller>
     <cacheLifetime>2400</cacheLifetime>
 
     <meta>
-        <title lang="en">Homepage</title>
+        <title lang="en">Events</title>
     </meta>
 
     <properties>
@@ -29,7 +29,7 @@
 
                 <property name="url" type="resource_locator" mandatory="true">
                     <meta>
-                        <title lang="en">URL</title>
+                        <title lang="en">Resource Locator</title>
                     </meta>
 
                     <tag name="sulu.rlp"/>
@@ -37,32 +37,25 @@
             </properties>
         </section>
 
-        <property name="header" type="media_selection">
-            <meta>
-                <title lang="en">Header Image</title>
-            </meta>
-
-            <params>
-                <param name="types" value="image,video"/>
-                <param name="displayOptions" type="collection">
-                    <param name="leftTop" value="false"/>
-                    <param name="top" value="true"/>
-                    <param name="rightTop" value="false"/>
-                    <param name="left" value="false"/>
-                    <param name="middle" value="false"/>
-                    <param name="right" value="false"/>
-                    <param name="leftBottom" value="false"/>
-                    <param name="bottom" value="false"/>
-                    <param name="rightBottom" value="false"/>
-                </param>
-                <param name="defaultDisplayOption" value="top"/>
-            </params>
-        </property>
-
         <property name="article" type="text_editor">
             <meta>
                 <title lang="en">Article</title>
             </meta>
+        </property>
+
+        <property name="events" type="smart_content">
+            <meta>
+                <title lang="en">Events</title>
+            </meta>
+
+            <params>
+                <param name="properties" type="collection">
+                    <param name="start_date" value="start_date"/>
+                    <param name="end_date" value="end_date"/>
+                    <param name="excerpt_title" value="excerpt.title"/>
+                    <param name="excerpt_description" value="excerpt.description"/>
+                </param>
+            </params>
         </property>
     </properties>
 </template>
