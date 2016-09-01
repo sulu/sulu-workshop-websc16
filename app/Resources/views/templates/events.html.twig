@@ -16,7 +16,7 @@
     <ul>
         {% for event in content.events %}
             <li>
-                <a href="{{ event.url }}">{{ event.title }}</a>
+                <a href="{{ event.url }}">{{ event.start_date }} - {{ event .end_date }}: {{ event.title }}</a>
             </li>
         {% endfor %}
     </ul>

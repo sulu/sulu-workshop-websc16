@@ -47,6 +47,13 @@
             <meta>
                 <title lang="en">Events</title>
             </meta>
+
+            <params>
+                <param name="properties" type="collection">
+                    <param name="start_date" value="start_date"/>
+                    <param name="end_date" value="end_date"/>
+                </param>
+            </params>
         </property>
     </properties>
 </template>
