@@ -29,7 +29,15 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <!-- TODO: Insert main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li{% if template is defined and 'homepage' == template %} class="active"{% endif %}><a href="/">Homepage</a></li>
+                            {% for item in sulu_navigation_root_flat('main') %}
+                                <li{% if uuid == item.uuid %} class="active"{% endif %}>
+                                    <a href="{{ sulu_content_path(item.url) }}"
+                                       title="{{ item.title }}">{{ item.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
 
                         <!-- TODO: Insert locale switcher -->
 
